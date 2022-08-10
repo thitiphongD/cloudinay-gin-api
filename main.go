@@ -1,6 +1,9 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/thitiphongD/cloudinary-gin-api/controllers"
+)
 
 func main() {
 	router := gin.Default()
@@ -10,6 +13,9 @@ func main() {
 			"message": "Hello from Cloudinary",
 		})
 	})
+
+	router.POST("file", controllers.FileUpload())
+	router.POST("/remote", controllers.RemoteUpload())
 
 	router.Run()
 }
